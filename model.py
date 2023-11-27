@@ -303,5 +303,3 @@ class UNet(nn.Module):
             x = upsample(x)
         
         return self.final_conv(x)
-    
-    
