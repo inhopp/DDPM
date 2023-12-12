@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 from utils import linear_beta_schedule, cosine_beta_schedule, extract
 
-import tqdm
+from tqdm import tqdm
 
 timesteps = 200
 
@@ -82,5 +82,5 @@ def p_sample_loop(model, shape):
 
 
 @torch.no_grad()
-def sample(model, image_size=128, batch_size=16, channels=3):
+def sample(model, image_size=28, batch_size=128, channels=1):
     return p_sample_loop(model, shape=(batch_size, channels, image_size, image_size))

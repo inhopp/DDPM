@@ -8,6 +8,8 @@ def parse_args():
 
     # models
     parser.add_argument("--pretrained", type=bool, default=False)
+    parser.add_argument("--input_size", type=int, default=28)
+    parser.add_argument("--input_channels", type=int, default=1)
 
     # dataset
     parser.add_argument("--data_dir", type=str, default="./datasets/")
@@ -16,7 +18,7 @@ def parse_args():
     # training setting
     parser.add_argument("--in_channels", type=int, default=3)
     parser.add_argument("--lr", type=float, default=0.0003)
-    parser.add_argument("--n_epoch", type=int, default=30)
+    parser.add_argument("--n_epoch", type=int, default=100)
     parser.add_argument("--num_workers", type=int, default=4)
     parser.add_argument("--batch_size", type=int, default=32)
 

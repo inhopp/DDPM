@@ -180,7 +180,7 @@ class ConvNextBlock(nn.Module):
     
 
 # Group normalization before attention layer
-class PreNorm(nn.modules):
+class PreNorm(nn.Module):
     def __init__(self, dim, fn):
         super().__init__()
         self.fn = fn
