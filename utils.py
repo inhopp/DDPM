@@ -32,21 +32,3 @@ def extract(a, t, x_shape):
     batch_size = t.shape[0]
     out = a.gather(-1, t.cpu())
     return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
-
-
-def plot(images, **imshow_kwargs):
-    # make a 2d grid even if there's just 1 row
-    if not isinstance(images[0], list):
-        images = [images]
-
-    num_rows = len(images)
-    num_cols = len(images[0])
-    fig, axs = plt.subplots(figsize=(200, 200), nrows=num_rows, ncols=num_cols, squeeze=False)
-
-    for row_idx, row in enumerate(images):
-        for col_idx, img in enumerate(row):
-            ax = axs[row_idx, col_idx]
-            ax.imshow(np.asarray(img), **imshow_kwargs)
-    
-    plt.tight_layout()
-    return

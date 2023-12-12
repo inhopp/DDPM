@@ -3,7 +3,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import diffusion
-import dill as pickle
 from data import generate_loader
 from option import get_option
 from model import UNet
@@ -57,13 +56,12 @@ class Solver():
                 self.optim.step()   
 
                 if (batch % 100 == 0):
-                    print("Loss:", loss.item())
+                    print("Epoch:", epoch, " Loss:", loss.item())
 
 
-                if (epoch+1) % 24 == 0:
+                if (epoch+1) % 25 == 0:
                     generated_imgs = sample(self.model)
-                    generated_tensor_images = [torch.from_numpy(img) for img in generated_imgs]
-                    save_image(generated_tensor_images[:25], f"data{epoch}.png", nrow=5, normalize=True)
+                    save_image(torch.from_numpy(generated_imgs[0][:25]), f"data{epoch}.png", nrow=5, normalize=True)
 
 
     
