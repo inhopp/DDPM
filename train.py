@@ -16,7 +16,7 @@ class Solver():
         self.dev = torch.device("cuda:{}".format(opt.gpu) if torch.cuda.is_available() else "cpu")
         print("device: ", self.dev)
 
-        self.model = UNet(dim=opt.img_size, channels=opt.input_channels, dim_mults=(1,2,4,)).to(self.dev)
+        self.model = UNet(dim=opt.input_size, channels=opt.input_channels, dim_mults=(1,2,4,)).to(self.dev)
 
         if opt.pretrained:
             load_path = os.path.join(opt.chpt_root, opt.data_name, "best_epoch.pt")

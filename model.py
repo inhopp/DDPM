@@ -196,8 +196,8 @@ class UNet(nn.Module):
     def __init__(
             self,
             dim,
-            init_dim,
-            out_dim,
+            init_dim=None,
+            out_dim=None,
             dim_mults=(1, 2, 4, 8),
             channels=3,
             with_time_emb=True,
