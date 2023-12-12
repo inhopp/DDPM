@@ -45,7 +45,7 @@ class SinusoidalPositionEmbeddings(nn.Module):
         embeddings = math.log(10000) / (half_dim - 1)
         embeddings = torch.exp(torch.arange(half_dim, device=device) * -embeddings)
         embeddings = time[:, None] * embeddings[None, :]
-        embeddings = torch.cat((embeddings.sine(), embeddings.cos()), dim=-1)
+        embeddings = torch.cat((embeddings.sin(), embeddings.cos()), dim=-1)
 
         return embeddings
     
