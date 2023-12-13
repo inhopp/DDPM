@@ -43,7 +43,7 @@ class Solver():
             self.model.train()
             loop = tqdm(self.train_loader)
 
-            for batch, (images, _) in enumerate(loop):
+            for _, (images, _) in enumerate(loop):
                 batch_size = images.shape[0]
                 images = images.to(self.dev)
 
@@ -55,15 +55,11 @@ class Solver():
                 loss.backward()
                 self.optim.step()   
 
-                if (batch % 100 == 0):
-                    print("Epoch:", epoch, " Loss:", loss.item())
+            print("Epoch:", epoch, " Loss:", loss.item())
 
-
-                if (epoch+1) % 25 == 0:
+            if (epoch+1) % 25 == 0:
                     generated_imgs = sample(self.model)
-                    save_image(torch.from_numpy(generated_imgs[0][:25]), f"data{epoch}.png", nrow=5, normalize=True)
-
-
+                    save_image(torch.from_numpy(generated_imgs[0][:-25]), f"data{epoch}.png", nrow=5, normalize=False)
     
     def save(self):
         os.makedirs(os.path.join(self.opt.ckpt_root, self.opt.data_name), exist_ok=True)
