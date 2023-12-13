@@ -10,7 +10,7 @@ def generate_loader(phase, opt):
             transforms.Resize(img_size),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
-            transforms.Lambda(lambda t: (t * 2) - 1),
+            transforms.Normalize([0.5], [0.5]),
         ])
     
     dataset = datasets.FashionMNIST(root="./datasets", train=True, download=True, transform=transform)
