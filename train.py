@@ -57,9 +57,10 @@ class Solver():
 
             print("Epoch:", epoch, " Loss:", loss.item())
 
-            if (epoch+1) % 25 == 0:
+            if (epoch+1) % 10 == 0:
                     generated_imgs = sample(self.model)
-                    save_image(torch.from_numpy(generated_imgs[0][:-25]), f"data{epoch}.png", nrow=5, normalize=False)
+                    save_image(torch.from_numpy(generated_imgs[-1][:25]), f"last_data{epoch+1}.png", nrow=5, normalize=True)
+                    save_image(torch.from_numpy(generated_imgs[0][:25]), f"first_data{epoch+1}.png", nrow=5, normalize=True)
     
     def save(self):
         os.makedirs(os.path.join(self.opt.ckpt_root, self.opt.data_name), exist_ok=True)

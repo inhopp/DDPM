@@ -41,7 +41,7 @@ def p_losses(denoise_model, x_0, t, noise=None):
     x_noisy = q_sample(x_0=x_0, t=t, noise=noise)
     predicted_noise = denoise_model(x_noisy, t)
 
-    loss = F.mse_loss(noise, predicted_noise)
+    loss = F.smooth_l1_loss(noise, predicted_noise)
 
     return loss
 
