@@ -18,18 +18,18 @@ Denoising Diffusion Probabilistic Models from scratch (pytorch)
 
 ``` python 
 ├── DDPM
-        ├── datasets
-        │    
-        ├── data
-        │     ├── __init__.py
-        │     └── dataset.py
-        ├── option.py
-        ├── model.py
-        ├── train.py
-        ├── utils.py
-        ├── diffusion.py
-        ├── requirments.txt
-        └── README.md
+    ├── datasets
+    │    
+    ├── data
+    │     ├── __init__.py
+    │     └── dataset.py
+    ├── option.py
+    ├── model.py
+    ├── train.py
+    ├── utils.py
+    ├── diffusion.py
+    ├── requirments.txt
+    └── README.md
 ```
 
 - `data/__init__.py` : dataset loader
@@ -50,6 +50,7 @@ Denoising Diffusion Probabilistic Models from scratch (pytorch)
 ``` python
 # Clone this repo and install dependency
 git clone https://github.com/inhopp/DDPM.git
+pip install -r "DDPM/requirments.txt"
 ```
 
 <br>
